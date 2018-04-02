@@ -8,5 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Moore.Huang",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "require-dir": "^1.0.0"
+  },
+  "dependencies": {
+    "npm": "^5.8.0"
+  }
 }
