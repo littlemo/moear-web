@@ -17,18 +17,6 @@
 </head>
 <body>
   {%- block body %}
-
-  {%- if messages %}
-  <div>
-    <strong>Messages:</strong>
-    <ul>
-    {%- for message in messages %}
-      <li>{{ message }}</li>
-    {%- endfor %}
-    </ul>
-  </div>
-  {%- endif %}
-
   <div>
     <strong>Menu:</strong>
     <ul>
@@ -41,9 +29,22 @@
     {%- endif %}
     </ul>
   </div>
-  {%- block content %}{% endblock %}
   {%- endblock %}
   {%- block extra_body %}{% endblock %}
+  <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" {% if message.pk %}data-dismiss-url="{% url 'message_mark_read' message.pk %}{% endif %}">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </div>
+
+  {% endblock %}
   <script src="/static/js/jquery.js"></script>
   <script src="/static/js/bootstrap.js"></script>
   <script src="/static/js/vue.js"></script>
