@@ -9,7 +9,7 @@ gulp.task('build', function(callback) {
     'delete',
     [
       'html',
-      'static-js',
+      'relyon-js',
     ],
     callback);
 });

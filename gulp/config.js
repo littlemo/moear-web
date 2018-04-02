@@ -84,7 +84,7 @@ module.exports = {
       }
     }
   },
-  staticJS: {
+  relyonJS: {
     src: [
       srcAssets + '/static/js/*.js',
     ],
