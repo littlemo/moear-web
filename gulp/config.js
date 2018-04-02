@@ -68,19 +68,17 @@ module.exports = {
       replace: {
         // bootstrap
         '/static/css/bootstrap.css':
-          '//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css',
-        '/static/css/bootstrap-theme.css':
-          '//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
-        '/static/js/bootstrap.js':
-          '//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js',
+          'https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css',
+        '/static/js/bootstrap.bundle.js':
+          'https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js',
 
         // vue
         '/static/js/vue.js':
-          '//cdn.bootcss.com/vue/2.5.13/vue.min.js',
+          'https://cdn.bootcss.com/vue/2.5.16/vue.min.js',
 
         // Others
         '/static/js/jquery.js':
-          '//cdn.bootcss.com/jquery/3.2.1/jquery.min.js',
+          'https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js',
       }
     }
   },
