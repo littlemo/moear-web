@@ -10,6 +10,7 @@ gulp.task('build', function(callback) {
     [
       'html',
       'relyon-js',
+      'images',
       'node-modules',
     ],
     callback);
