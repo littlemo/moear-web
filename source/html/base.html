@@ -17,6 +17,7 @@
 </head>
 <body>
   {% block body %}
+  {% block nav %}
   <div>
     <strong>Menu:</strong>
     <ul>
@@ -29,6 +30,8 @@
     {% endif %}
     </ul>
   </div>
+  {% endblock %}
+
   <div class="container">
     {% if messages %}
     {% for message in messages %}
