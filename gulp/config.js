@@ -4,8 +4,8 @@ var node_modules = 'node_modules';
 var src = 'source';
 var srcAssets = 'source';
 
-var development = '../server/server/pages/templates/pages';
-var developmentAssets = '../server/server/pages/static/pages';
+var development = '../server/server/pages/templates';
+var developmentAssets = '../server/server/pages/static';
 
 var production = development;
 var productionAssets = developmentAssets;
