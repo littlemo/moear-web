@@ -4,7 +4,7 @@ var node_modules = 'node_modules';
 var src = 'source';
 var srcAssets = 'source';
 
-var development = '../server/server/pages/templates';
+var development = '../server/server/templates';
 var developmentAssets = '../server/server/pages/static';
 
 var production = development;
@@ -67,19 +67,19 @@ module.exports = {
       renameOptions: {},
       replace: {
         // bootstrap
-        '/static/pages/css/bootstrap.css':
+        '/static/css/bootstrap.css':
           '//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css',
-        '/static/pages/css/bootstrap-theme.css':
+        '/static/css/bootstrap-theme.css':
           '//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
-        '/static/pages/js/bootstrap.js':
+        '/static/js/bootstrap.js':
           '//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js',
 
         // vue
-        '/static/pages/js/vue.js':
+        '/static/js/vue.js':
           '//cdn.bootcss.com/vue/2.5.13/vue.min.js',
 
         // Others
-        '/static/pages/js/jquery.js':
+        '/static/js/jquery.js':
           '//cdn.bootcss.com/jquery/3.2.1/jquery.min.js',
       }
     }
