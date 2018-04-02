@@ -9,6 +9,7 @@ gulp.task('build', function(callback) {
     'delete',
     [
       'html',
+      'styles',
       'relyon-js',
       'images',
       'node-modules',
