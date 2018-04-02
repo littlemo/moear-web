@@ -18,18 +18,43 @@
 <body>
   {% block body %}
   {% block nav %}
-  <div>
-    <strong>Menu:</strong>
-    <ul>
-    {% if user.is_authenticated %}
-      <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-      <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-    {% else %}
-      <li><a href="{% url 'account_login' %}">Sign In</a></li>
-      <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-    {% endif %}
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">MoEar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% block navbar-index-active %}{% endblock %}">
+          <a class="nav-link" href="/">{% trans "主页" %}{% block navbar-index-sr %}{% endblock %}</a>
+        </li>
+      </ul>
+      <ul class="nav nav-pills mr-0">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            {{ request.user|capfirst }}
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">{% trans "我的订阅" %}</a>
+            <a href="#" class="dropdown-item">{% trans "账户管理" %}</a>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'account_logout' %}" class="dropdown-item">{% trans "注销账户" %}</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'account_signup' %}">{% trans "注册" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_login' %}">{% trans "登录" %}</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
+  </nav>
   {% endblock %}
 
   <div class="container">
