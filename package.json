@@ -28,7 +28,5 @@
     "require-dir": "^1.0.0",
     "run-sequence": "^2.2.1"
   },
-  "dependencies": {
-    "npm": "^5.8.0"
-  }
+  "dependencies": {}
 }
