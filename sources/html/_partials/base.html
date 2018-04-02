@@ -1,0 +1,24 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="MoEar文章管理推送服务">
+  <meta name="keywords" content="MoEar,Kindle,推送,Amazon,文章管理,CMS">
+  <link rel="stylesheet" href="/static/pages/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/pages/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="/static/pages/css/app.css">
+  <title>{% block title %}{% trans "MoEar" %}{% endblock %}</title>
+</head>
+<body>
+  {% block content %}{% endblock %}
+  <script src="/static/pages/js/jquery.js"></script>
+  <script src="/static/pages/js/bootstrap.js"></script>
+  <script src="/static/pages/js/vue.js"></script>
+  <script src="/static/pages/js/app.js"></script>
+</body>
+</html>
