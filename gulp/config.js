@@ -24,4 +24,27 @@ module.exports = {
       browser: ["google chrome"]
     }
   },
+  delete: {
+    development: {
+      src: [development, developmentAssets],
+      options: {
+        force: true,
+      }
+    },
+    production: {
+      src: [
+        developmentAssets + '/css/app.css.map',
+
+        developmentAssets + '/css/bootstrap.css',
+        developmentAssets + '/css/bootstrap-theme.css',
+
+        developmentAssets + '/js/bootstrap.js',
+        developmentAssets + '/js/jquery.js',
+        developmentAssets + '/js/vue.js',
+      ],
+      options: {
+        force: true,
+      }
+    }
+  },
 }
