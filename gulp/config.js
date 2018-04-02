@@ -47,4 +47,32 @@ module.exports = {
       }
     }
   },
+  html: {
+    development: {
+      src: srcAssets + '/html/**/*.{html,htm}',
+      dest: development
+    },
+    production: {
+      src: srcAssets + '/html/**/*.{html,htm}',
+      dest: production,
+      renameOptions: {},
+      replace: {
+        // bootstrap
+        '/static/pages/css/bootstrap.css':
+          '//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css',
+        '/static/pages/css/bootstrap-theme.css':
+          '//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
+        '/static/pages/js/bootstrap.js':
+          '//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js',
+
+        // vue
+        '/static/pages/js/vue.js':
+          '//cdn.bootcss.com/vue/2.5.13/vue.min.js',
+
+        // Others
+        '/static/pages/js/jquery.js':
+          '//cdn.bootcss.com/jquery/3.2.1/jquery.min.js',
+      }
+    }
+  },
 }
