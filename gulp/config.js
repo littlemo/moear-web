@@ -104,6 +104,31 @@ module.exports = {
       cssnano: {}
     }
   },
+  stylesLint: {
+    src: [
+      srcAssets + '/styles/**/*.css',
+      '!' + srcAssets + '/styles/partials/_sprites.css'
+    ],
+    options: {
+      stylelint: {
+        'rules': {
+          'string-quotes': 'double',
+          'color-hex-case': 'lower',
+          'color-no-invalid-hex': true,
+          'declaration-colon-space-after': 'always',
+          'max-empty-lines': 2,
+          'rule-empty-line-before': [ 'always', {
+            'except': ['first-nested'],
+            'ignore': ['after-comment']
+          } ],
+          'value-no-vendor-prefix': true,
+        }
+      },
+      reporter: {
+        clearMessages: true
+      }
+    }
+  },
   relyonJS: {
     src: [
       srcAssets + '/static/js/*.js',
