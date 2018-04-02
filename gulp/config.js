@@ -11,6 +11,15 @@ var production = development;
 var productionAssets = developmentAssets;
 
 module.exports = {
+  watch: {
+    html: [
+      src + '/**/*.{html,markdown,md,yml,json,txt,xml}'
+    ],
+    styles: srcAssets + '/styles/**/*.css',
+    scripts: srcAssets + '/js/**/*.js',
+    images: srcAssets + '/images/**/*',
+    sprites: srcAssets + '/images/**/*.png'
+  },
   browsersync: {
     development: {
       proxy: 'localhost:8888',
