@@ -144,7 +144,6 @@ module.exports = {
       css: {
         src: [
           node_modules + '/bootstrap/dist/css/bootstrap.css',
-          node_modules + '/bootstrap/dist/css/bootstrap-theme.css',
         ],
         dest: developmentAssets + '/css',
       },
