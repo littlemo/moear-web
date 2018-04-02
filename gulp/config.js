@@ -90,4 +90,23 @@ module.exports = {
     ],
     dest: developmentAssets + '/js'
   },
+  nodeModules: {
+    development: {
+      css: {
+        src: [
+          node_modules + '/bootstrap/dist/css/bootstrap.css',
+          node_modules + '/bootstrap/dist/css/bootstrap-theme.css',
+        ],
+        dest: developmentAssets + '/css',
+      },
+      js: {
+        src: [
+          node_modules + '/jquery/dist/jquery.js',
+          node_modules + '/bootstrap/dist/js/bootstrap.js',
+          node_modules + '/vue/dist/vue.js',
+        ],
+        dest: developmentAssets + '/js',
+      },
+    }
+  },
 }
