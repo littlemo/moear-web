@@ -75,4 +75,10 @@ module.exports = {
       }
     }
   },
+  staticJS: {
+    src: [
+      srcAssets + '/static/js/*.js',
+    ],
+    dest: developmentAssets + '/js'
+  },
 }
