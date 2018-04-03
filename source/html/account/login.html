@@ -42,19 +42,39 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% csrf_token %}
   {% if form.non_field_errors %}
   <div class="alert alert-danger" role="alert">
-    {{ form.non_field_errors }}
+    {% for error in form.non_field_errors %}
+    {{ error }} <br>
+    {% endfor %}
   </div>
   {% endif %}
   <div class="form-group">
-    {{ form.login.errors }}
+    {% if form.login.errors %}
+    <span class="text-danger mx-2">
+    {% for error in form.login.errors %}
+    {{ error }} <br>
+    {% endfor %}
+    </span>
+    {% endif %}
     <input type="text" name="login" class="form-control" id="id_login" autofocus="autofocus" placeholder="{% trans 'Username or e-mail' %}" required>
   </div>
   <div class="form-group">
-    {{ form.password.errors }}
+    {% if form.password.errors %}
+    <span class="text-danger mx-2">
+    {% for error in form.password.errors %}
+    {{ error }} <br>
+    {% endfor %}
+    </span>
+    {% endif %}
     <input type="password" class="form-control" id="id_password" name="password" placeholder="{% trans 'Password' %}" required>
   </div>
   <div class="form-check">
-    {{ form.remember.errors }}
+    {% if form.remember.errors %}
+    <span class="text-danger mx-2">
+    {% for error in form.remember.errors %}
+    {{ error }} <br>
+    {% endfor %}
+    </span>
+    {% endif %}
     <input type="checkbox" class="form-check-input" id="id_remember" name="remember">
     <label class="form-check-label" for="id_remember">{% trans "Remember Me" %}</label>
   </div>
