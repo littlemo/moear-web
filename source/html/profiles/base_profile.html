@@ -9,12 +9,14 @@
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
   <a class="nav-link {% block profile-chg-pwd-cls %}{% endblock %}" id="v-pills-chg-pwd-tab" data-toggle="pill" href="#v-pills-chg-pwd" role="tab" aria-controls="v-pills-chg-pwd" aria-selected="true">{% trans "修改密码" %}</a>
   <a class="nav-link {% block profile-chg-email-cls %}{% endblock %}" id="v-pills-chg-email-tab" data-toggle="pill" href="#v-pills-chg-email" role="tab" aria-controls="v-pills-chg-email" aria-selected="false">{% trans "修改邮箱" %}</a>
+  <a class="nav-link {% block profile-invitation-cls %}{% endblock %}" id="v-pills-invitation-tab" data-toggle="pill" href="#v-pills-invitation" role="tab" aria-controls="v-pills-invitation" aria-selected="false">{% trans "注册邀请" %}</a>
 </div>
 </div>
 <div class="col">
 <div class="tab-content" id="v-pills-tabContent">
   <div class="tab-pane fade {% block profile-chg-pwd-content-cls %}{% endblock %}" id="v-pills-chg-pwd" role="tabpanel" aria-labelledby="v-pills-chg-pwd-tab">{% block profile-chg-pwd-content %}{% endblock %}</div>
   <div class="tab-pane fade {% block profile-chg-email-content-cls %}{% endblock %}" id="v-pills-chg-email" role="tabpanel" aria-labelledby="v-pills-chg-email-tab">{% block profile-chg-email-content %}{% endblock %}</div>
+  <div class="tab-pane fade {% block profile-invitation-content-cls %}{% endblock %}" id="v-pills-invitation" role="tabpanel" aria-labelledby="v-pills-invitation-tab">{% block profile-invitation-content %}{% endblock %}</div>
 </div>
 </div>
 </div>
