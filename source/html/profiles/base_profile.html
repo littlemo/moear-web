@@ -7,8 +7,8 @@
 <div class="row my-4">
 <div class="col-sm-3 col-lg-2">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link {% block profile-chg-pwd-cls %}{% endblock %}" id="v-pills-chg-pwd-tab" data-toggle="pill" href="{% url 'account_change_password' %}" role="tab" aria-controls="v-pills-chg-pwd" aria-selected="true">{% trans "修改密码" %}</a>
-  <a class="nav-link {% block profile-chg-email-cls %}{% endblock %}" id="v-pills-chg-email-tab" data-toggle="pill" href="{% url 'account_email' %}" role="tab" aria-controls="v-pills-chg-email" aria-selected="false">{% trans "修改邮箱" %}</a>
+  <a class="nav-link {% block profile-chg-pwd-cls %}{% endblock %}" id="v-pills-chg-pwd-tab" href="{% url 'account_change_password' %}" role="tab" aria-controls="v-pills-chg-pwd" aria-selected="true">{% trans "修改密码" %}</a>
+  <a class="nav-link {% block profile-chg-email-cls %}{% endblock %}" id="v-pills-chg-email-tab" href="{% url 'account_email' %}" role="tab" aria-controls="v-pills-chg-email" aria-selected="false">{% trans "修改邮箱" %}</a>
   <a class="nav-link {% block profile-invitation-cls %}{% endblock %}" id="v-pills-invitation-tab" data-toggle="pill" href="#v-pills-invitation" role="tab" aria-controls="v-pills-invitation" aria-selected="false">{% trans "注册邀请" %}</a>
 </div>
 </div>
