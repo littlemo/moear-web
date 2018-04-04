@@ -7,3 +7,29 @@
   {{ form.as_div }}
   <button type="submit" class="btn btn-primary my-3">{% trans "更新" %}</button>
 </form>
+
+<hr>
+
+<h4 class="title my-4">{% trans "文章源" %}</h4>
+<table class="table table-sm table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col" width="10%">{% trans "名称" %}</th>
+      <th scope="col" width="5%">{% trans "作者" %}</th>
+      <th scope="col" width="15%">{% trans "邮箱" %}</th>
+      <th scope="col">{% trans "描述" %}</th>
+      <th scope="col" width="50px">{% trans "状态" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for spider in spiders %}
+    <tr>
+      <th scope="row">{{ spider.display_name }}</th>
+      <td>{{ spider.author }}</td>
+      <td>{{ spider.email }}</td>
+      <td>{{ spider.description }}</td>
+      <td><span class="{% if spider.enabled == True %}text-success{% else %}text-muted{% endif %}">{% if spider.enabled == True %}开启{% else %}关闭{% endif %}</span></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
