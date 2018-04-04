@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<h4 class="title my-4">{% trans "订阅" %}</h4>
+
+<form id="form-post-subscribe" method="POST" action="{% url 'subscription_post_subscribe' %}">
+  {% csrf_token %}
+  {{ form.as_div }}
+  <button type="submit" class="btn btn-primary my-3">{% trans "更新" %}</button>
+</form>
+

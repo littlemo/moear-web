@@ -1,0 +1,12 @@
+{% extends "subscription/my_subscribe.html" %}
+
+{% load i18n %}
+
+{% block post-subscribe-cls %}active{% endblock %}
+
+{% block tab-content-id %}post-subscribe{% endblock %}
+{% block tab-content-label %}post-subscribe{% endblock %}
+
+{% block tab-content %}
+{% include 'pages/_partials/snippet-post-subscribe.html' %}
+{% endblock %}

@@ -8,7 +8,7 @@
 <div class="row my-4">
 <div class="col-sm-3 col-lg-2">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link {% block post-subscribe-cls %}{% endblock %}" id="v-pills-post-subscribe-tab" href="#v-pills-post-subscribe" role="tab" aria-controls="v-pills-post-subscribe" aria-selected="true">{% trans "文章订阅" %}</a>
+  <a class="nav-link {% block post-subscribe-cls %}{% endblock %}" id="v-pills-post-subscribe-tab" href="{% url 'subscription_post_subscribe' %}" role="tab" aria-controls="v-pills-post-subscribe" aria-selected="true">{% trans "文章订阅" %}</a>
   <a class="nav-link {% block deliver-settings-cls %}{% endblock %}" id="v-pills-deliver-settings-tab" href="{% url 'subscription_deliver_settings' %}" role="tab" aria-controls="v-pills-deliver-settings" aria-selected="false">{% trans "投递设置" %}</a>
   <a class="nav-link {% block deliver-log-cls %}{% endblock %}" id="v-pills-deliver-log-tab" href="{% url 'subscription_deliver_log' %}" role="tab" aria-controls="v-pills-deliver-log" aria-selected="false">{% trans "投递日志" %}</a>
 </div>
