@@ -8,3 +8,10 @@
   <button type="submit" class="btn btn-primary my-3 generic-ajax-submit">{% trans "保存设置" %}</button>
 </form>
 
+<hr>
+
+<div class="alert alert-warning">
+  {% blocktrans %}
+  注意：您必须先激活您的 Kindle ，然后到亚马逊的<a href="https://www.amazon.cn/mn/dcw/myx.html#/home/settings/payment" class="text-info" target="_blank">账户中心</a>【管理我的内容和设备】-【设置】-【个人文档设置】，将 "<span class="text-primary">{{ default_from_email }}</span>" 加入到【已认可的发件人电子邮箱列表】。
+  {% endblocktrans %}
+</div>
