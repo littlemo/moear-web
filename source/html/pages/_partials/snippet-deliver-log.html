@@ -1,0 +1,25 @@
+{% load i18n %}
+
+<p class="text-muted ml-2"><span class="text-danger pr-1">*</span>当前只显示最后10条投递日志</p>
+<table class="table table-sm table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">{% trans "时间" %}</th>
+      <th scope="col">{% trans "源" %}</th>
+      <th scope="col">{% trans "附件名称" %}</th>
+      <th scope="col">{% trans "附件大小" %}</th>
+      <th scope="col">{% trans "状态" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for log in deliver_log %}
+    <tr>
+      <th scope="row">{{ log.date|date:"Y-m-d H:i:s" }}</th>
+      <td>{{ log.spider.display_name }}</td>
+      <td>{{ log.file_name }}</td>
+      <td>{{ log.file_size|filesizeformat }}</td>
+      <td><span class="{% if log.status == 'completed' %}text-success{% elif log.status == 'failed' %}text-danger{% else %}text-info{% endif %}">{{ log.get_status_display }}</span></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
