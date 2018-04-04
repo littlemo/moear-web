@@ -9,20 +9,16 @@
 <div class="row my-4">
 <div class="col-sm-3 col-lg-2">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link {% block profile-chg-pwd-cls %}{% endblock %}" id="v-pills-chg-pwd-tab" data-toggle="pill" href="#v-pills-chg-pwd" role="tab" aria-controls="v-pills-chg-pwd" aria-selected="true">{% trans "修改密码" %}</a>
-  <a class="nav-link {% block profile-chg-email-cls %}{% endblock %}" id="v-pills-chg-email-tab" data-toggle="pill" href="#v-pills-chg-email" role="tab" aria-controls="v-pills-chg-email" aria-selected="false">{% trans "修改邮箱" %}</a>
+  <a class="nav-link {% block profile-chg-pwd-cls %}{% endblock %}" id="v-pills-chg-pwd-tab" href="{% url 'account_change_password' %}" role="tab" aria-controls="v-pills-chg-pwd" aria-selected="true">{% trans "修改密码" %}</a>
+  <a class="nav-link {% block profile-chg-email-cls %}{% endblock %}" id="v-pills-chg-email-tab" href="{% url 'account_email' %}" role="tab" aria-controls="v-pills-chg-email" aria-selected="false">{% trans "修改邮箱" %}</a>
   {% if request.user.is_superuser %}
-  <a class="nav-link {% block profile-invite-cls %}{% endblock %}" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-invite" role="tab" aria-controls="v-pills-invite" aria-selected="false">{% trans "注册邀请" %}</a>
+  <a class="nav-link {% block profile-invite-cls %}{% endblock %}" id="v-pills-invite-tab" href="{% url 'send-invite' %}" role="tab" aria-controls="v-pills-invite" aria-selected="false">{% trans "注册邀请" %}</a>
   {% endif %}
 </div>
 </div>
 <div class="col">
 <div class="tab-content" id="v-pills-tabContent">
-  <div class="tab-pane fade {% block profile-chg-pwd-content-cls %}{% endblock %}" id="v-pills-chg-pwd" role="tabpanel" aria-labelledby="v-pills-chg-pwd-tab">{% include "pages/_partials/form-change-password.html" %}</div>
-  <div class="tab-pane fade {% block profile-chg-email-content-cls %}{% endblock %}" id="v-pills-chg-email" role="tabpanel" aria-labelledby="v-pills-chg-email-tab">{% include "pages/_partials/form-change-email.html" %}</div>
-  {% if request.user.is_superuser %}
-  <div class="tab-pane fade {% block profile-invite-content-cls %}{% endblock %}" id="v-pills-invite" role="tabpanel" aria-labelledby="v-pills-invite-tab">{% include "pages/_partials/form-invite.html" %}</div>
-  {% endif %}
+  <div class="tab-pane fade show active" id="v-pills" role="tabpanel" aria-labelledby="v-pills-tab">{% block tab-content %}{% endblock %}</div>
 </div>
 </div>
 </div>
