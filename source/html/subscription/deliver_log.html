@@ -1,0 +1,12 @@
+{% extends "subscription/my_subscribe.html" %}
+
+{% load i18n %}
+
+{% block deliver-log-cls %}active{% endblock %}
+
+{% block tab-content-id %}deliver-log{% endblock %}
+{% block tab-content-label %}deliver-log{% endblock %}
+
+{% block tab-content %}
+{% include 'pages/_partials/snippet-deliver-log.html' with deliver_log=deliver_log %}
+{% endblock %}
