@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<h4 class="title my-4">{% trans "设置" %}</h4>
+
+<form id="form-deliver-settings" method="POST" action="{% url 'subscription_deliver_settings' %}">
+  {% csrf_token %}
+  {{ form.as_div }}
+  <button type="submit" class="btn btn-primary my-3 generic-ajax-submit">{% trans "保存设置" %}</button>
+</form>
+
