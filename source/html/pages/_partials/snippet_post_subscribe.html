@@ -27,7 +27,7 @@
       <th scope="row">{{ spider.display_name }}</th>
       <td>{{ spider.author }}</td>
       <td>{{ spider.email }}</td>
-      <td>{{ spider.description }}</td>
+      <td class="text-left">{{ spider.description }}</td>
       <td><span class="{% if spider.enabled == True %}text-success{% else %}text-muted{% endif %}">{% if spider.enabled == True %}开启{% else %}关闭{% endif %}</span></td>
     </tr>
     {% endfor %}
