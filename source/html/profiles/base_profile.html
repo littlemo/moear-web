@@ -30,11 +30,11 @@
 
 {% block extra_body %}
 <script type="text/javascript">
-var test = new Vue({
+new Vue({
   el: '#view-spider-switch',
   data: {
     spiders: [],
-    error_message: null,
+    message_error: null,
   },
   methods: {
     loadSpiders: function() {
@@ -45,7 +45,7 @@ var test = new Vue({
           that.spiders = data;
         },
         error: function(xhr){
-          that.error_message = xhr.responseJSON.detail;
+          that.message_error = xhr.responseJSON.detail || xhr.responseJSON || xhr.responseText;
           console.log(xhr.responseJSON);
           console.log("错误提示： " + xhr.status + " " + xhr.statusText);
         },
@@ -64,7 +64,7 @@ var test = new Vue({
           spider = data;
         },
         error: function(xhr) {
-          that.error_message = xhr.responseJSON;
+          that.message_error = xhr.responseJSON || xhr.responseText;
           console.log(xhr);
           console.log("错误提示： " + xhr.status + " " + xhr.statusText);
         },
