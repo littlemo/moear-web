@@ -79,6 +79,8 @@ module.exports = {
         // Others
         '/static/js/jquery.js':
           'https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js',
+        '/static/js/jquery.cookie.js':
+          'https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js',
       }
     }
   },
@@ -155,6 +157,7 @@ module.exports = {
       js: {
         src: [
           node_modules + '/jquery/dist/jquery.js',
+          node_modules + '/jquery.cookie/jquery.cookie.js',
           node_modules + '/bootstrap/dist/js/bootstrap.bundle.js',
           node_modules + '/vue/dist/vue.js',
         ],
