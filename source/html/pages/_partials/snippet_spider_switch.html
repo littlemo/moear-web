@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<h4 class="title my-4">{% trans "爬虫列表" %}</h4>
+
+<table class="table table-sm table-hover text-center" id="table-spider-switch">
+  <thead>
+    <tr>
+      <th scope="col" width="10%">{% trans "名称" %}</th>
+      <th scope="col" width="5%">{% trans "作者" %}</th>
+      <th scope="col" width="15%">{% trans "邮箱" %}</th>
+      <th scope="col">{% trans "描述" %}</th>
+      <th scope="col" width="50px">{% trans "状态" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% verbatim row-item %}
+    <tr v-for="spider in spiders">
+      <th scope="row">{{ spider.display_name }}</th>
+      <td>{{ spider.author }}</td>
+      <td>{{ spider.email }}</td>
+      <td class="text-left">{{ spider.description }}</td>
+      <td><input class="form-check-input position-static" type="checkbox" :id="spider.name" :value="spider.name" v-model="spider_enabled" :aria-label="spider.display_name"></td>
+    </tr>
+    {% endverbatim row-item %}
+  </tbody>
+</table>

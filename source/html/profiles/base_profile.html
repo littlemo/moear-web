@@ -14,11 +14,15 @@
   {% if request.user.is_superuser %}
   <a class="nav-link {% block profile-invite-cls %}{% endblock %}" id="v-pills-invite-tab" href="{% url 'send-invite' %}" role="tab" aria-controls="v-pills-invite" aria-selected="false">{% trans "注册邀请" %}</a>
   {% endif %}
+  {% if request.user.is_staff %}
+  <a class="nav-link" id="v-pills-spider-switch-tab" data-toggle="pill" href="#v-pills-spider-switch" role="tab" aria-controls="v-pills-spider-switch" aria-selected="false">{% trans "爬虫设置" %}</a>
+  {% endif %}
 </div>
 </div>
 <div class="col">
 <div class="tab-content" id="v-pills-tabContent">
   <div class="tab-pane fade show active" id="v-pills" role="tabpanel" aria-labelledby="v-pills-tab">{% block tab-content %}{% endblock %}</div>
+  <div class="tab-pane fade" id="v-pills-spider-switch" role="tabpanel" aria-labelledby="v-pills-spider-switch">{% include 'pages/_partials/snippet_spider_switch.html' %}</div>
 </div>
 </div>
 </div>
@@ -26,5 +30,38 @@
 
 {% block extra_body %}
 <script type="text/javascript">
+var test = new Vue({
+  el: '#table-spider-switch',
+  data: {
+    spiders: [],
+    spider_enabled: [],
+  },
+  methods: {
+    loadSpiders: function() {
+      var that = this;
+      $.ajax({
+        type: 'get',
+        url: '/api/spiders/switch/',
+        success: function(data){
+          that.spiders = data;
+          data.forEach(function(spider){
+            if (spider.enabled) {
+              that.spider_enabled.push(spider.name);
+            }
+          });
+        },
+        error: function(xhr){
+          console.log("错误提示： " + xhr.status + " " + xhr.statusText);
+        }
+      })
+    }
+  },
+  mounted: function() {
+    var that = this;
+    this.$nextTick(function() {
+      that.loadSpiders();
+    });
+  }
+});
 </script>
 {% endblock %}
