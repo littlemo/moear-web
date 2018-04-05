@@ -20,11 +20,11 @@
   <tbody>
     {% verbatim %}
     <tr v-for="spider in spiders">
-      <th scope="row">{{ spider.display_name }}</th>
-      <td>{{ spider.author }}</td>
-      <td>{{ spider.email }}</td>
-      <td class="text-left">{{ spider.description }}</td>
-      <td>
+      <th class="align-middle" scope="row">{{ spider.display_name }}</th>
+      <td class="align-middle">{{ spider.author }}</td>
+      <td class="align-middle">{{ spider.email }}</td>
+      <td class="text-left align-middle">{{ spider.description }}</td>
+      <td class="align-middle">
         <button v-if="spider.enabled" type="button" class="btn btn-success" v-on:click="enabledToggle(spider)">开启</button>
         <button v-else type="button" class="btn btn-outline-danger" v-on:click="enabledToggle(spider)">关闭</button>
       </td>
