@@ -52,12 +52,36 @@ var test = new Vue({
       });
     },
     enabledToggle: function(spider) {
+      var that = this;
       spider.enabled = !spider.enabled;
+      $.post({
+        url: '/api/spiders/switch/',
+        data: JSON.stringify({
+          name: spider.name,
+          enabled: spider.enabled,
+        }),
+        success: function(data) {
+          spider = data;
+        },
+        error: function(xhr) {
+          that.error_message = xhr.responseJSON;
+          console.log(xhr);
+          console.log("错误提示： " + xhr.status + " " + xhr.statusText);
+        },
+      });
     },
   },
   mounted: function() {
     var that = this;
     this.$nextTick(function() {
+      $(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRFToken': $.cookie('csrftoken'),
+            'Content-Type': "application/json; charset=utf-8",
+          }
+        });
+      });
       that.loadSpiders();
     });
   }
