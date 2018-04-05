@@ -8,7 +8,7 @@
 <div class="row my-4">
 <div class="col-sm-3 col-lg-2">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link {% block post-subscribe-cls %}{% endblock %}" id="v-pills-post-subscribe-tab" href="{% url 'subscription_post_subscribe' %}" role="tab" aria-controls="v-pills-post-subscribe" aria-selected="true">{% trans "文章订阅" %}</a>
+  <a class="nav-link active" id="v-pills-post-subscribe-tab" data-toggle="pill" href="#v-pills-post-subscribe" role="tab" aria-controls="v-pills-post-subscribe" aria-selected="true">{% trans "文章订阅" %}</a>
   <a class="nav-link {% block deliver-settings-cls %}{% endblock %}" id="v-pills-deliver-settings-tab" href="{% url 'subscription_deliver_settings' %}" role="tab" aria-controls="v-pills-deliver-settings" aria-selected="false">{% trans "投递设置" %}</a>
   <a class="nav-link {% block deliver-log-cls %}{% endblock %}" id="v-pills-deliver-log-tab" href="{% url 'subscription_deliver_log' %}" role="tab" aria-controls="v-pills-deliver-log" aria-selected="false">{% trans "投递日志" %}</a>
 </div>
@@ -16,7 +16,51 @@
 <div class="col">
 <div class="tab-content" id="v-pills-tabContent">
   <div class="tab-pane fade show active" id="v-pills-{% block tab-content-id %}{% endblock %}" role="tabpanel" aria-labelledby="v-pills-{% block tab-content-label %}{% endblock %}-tab">{% block tab-content %}{% endblock %}</div>
+  <div class="tab-pane fade show active" id="v-pills-post-subscribe" role="tabpanel" aria-labelledby="v-pills-post-subscribe-tab">{% include 'pages/_partials/snippet_post_subscribe.html' %}</div>
 </div>
 </div>
 </div>
+{% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript">
+var test = new Vue({
+  el: '#view-post-subscribe',
+  data: {
+    message_error: null,
+    spiders_list: [],
+    subscribe_list: [],
+  },
+  methods: {
+    loadSubscribe: function() {
+      var that = this;
+      $.get({
+        url: '/api/subscribe/',
+        success: function(data){
+          that.spiders_list = data.spiders_list;
+          that.subscribe_list = data.subscribe_list;
+        },
+        error: function(xhr){
+          that.message_error = xhr.responseJSON.detail || xhr.responseJSON || xhr.responseText;
+          console.log(xhr.responseJSON);
+          console.log("错误提示： " + xhr.status + " " + xhr.statusText);
+        },
+      });
+    },
+  mounted: function() {
+    var that = this;
+    this.$nextTick(function() {
+      $(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRFToken': $.cookie('csrftoken'),
+            'Content-Type': "application/json; charset=utf-8",
+          }
+        });
+      });
+      that.loadSubscribe();
+    });
+  }
+});
+</script>
 {% endblock %}
