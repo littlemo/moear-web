@@ -39,8 +39,7 @@ var test = new Vue({
   methods: {
     loadSpiders: function() {
       var that = this;
-      $.ajax({
-        type: 'get',
+      $.get({
         url: '/api/spiders/switch/',
         success: function(data){
           that.spiders = data;
@@ -49,8 +48,8 @@ var test = new Vue({
           that.error_message = xhr.responseJSON.detail;
           console.log(xhr.responseJSON);
           console.log("错误提示： " + xhr.status + " " + xhr.statusText);
-        }
-      })
+        },
+      });
     },
     enabledToggle: function(spider) {
       spider.enabled = !spider.enabled;
