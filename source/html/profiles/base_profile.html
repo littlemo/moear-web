@@ -31,10 +31,10 @@
 {% block extra_body %}
 <script type="text/javascript">
 var test = new Vue({
-  el: '#table-spider-switch',
+  el: '#view-spider-switch',
   data: {
     spiders: [],
-    spider_enabled: [],
+    error_message: null,
   },
   methods: {
     loadSpiders: function() {
@@ -44,17 +44,17 @@ var test = new Vue({
         url: '/api/spiders/switch/',
         success: function(data){
           that.spiders = data;
-          data.forEach(function(spider){
-            if (spider.enabled) {
-              that.spider_enabled.push(spider.name);
-            }
-          });
         },
         error: function(xhr){
+          that.error_message = xhr.responseJSON.detail;
+          console.log(xhr.responseJSON);
           console.log("错误提示： " + xhr.status + " " + xhr.statusText);
         }
       })
-    }
+    },
+    enabledToggle: function(spider) {
+      spider.enabled = !spider.enabled;
+    },
   },
   mounted: function() {
     var that = this;

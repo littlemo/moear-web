@@ -2,7 +2,12 @@
 
 <h4 class="title my-4">{% trans "爬虫列表" %}</h4>
 
-<table class="table table-sm table-hover text-center" id="table-spider-switch">
+<div id="view-spider-switch">
+{% verbatim %}
+<div v-show="error_message" class="alert alert-danger">{{ error_message }}</div>
+{% endverbatim %}
+
+<table class="table table-sm table-hover text-center">
   <thead>
     <tr>
       <th scope="col" width="10%">{% trans "名称" %}</th>
@@ -13,14 +18,18 @@
     </tr>
   </thead>
   <tbody>
-    {% verbatim row-item %}
+    {% verbatim %}
     <tr v-for="spider in spiders">
       <th scope="row">{{ spider.display_name }}</th>
       <td>{{ spider.author }}</td>
       <td>{{ spider.email }}</td>
       <td class="text-left">{{ spider.description }}</td>
-      <td><input class="form-check-input position-static" type="checkbox" :id="spider.name" :value="spider.name" v-model="spider_enabled" :aria-label="spider.display_name"></td>
+      <td>
+        <button v-if="spider.enabled" type="button" class="btn btn-success" v-on:click="enabledToggle(spider)">开启</button>
+        <button v-else type="button" class="btn btn-outline-danger" v-on:click="enabledToggle(spider)">关闭</button>
+      </td>
     </tr>
-    {% endverbatim row-item %}
+    {% endverbatim %}
   </tbody>
 </table>
+</div>
