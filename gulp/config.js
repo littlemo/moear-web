@@ -127,6 +127,13 @@ module.exports = {
       }
     }
   },
+  scripts: {
+    src: srcAssets + '/js/**/*.js',
+    dest: developmentAssets + '/js',
+  },
+  jshint: {
+    src: srcAssets + '/js/**/*.js',
+  },
   relyonJS: {
     src: [
       srcAssets + '/static/js/*.js',
