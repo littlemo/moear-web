@@ -9,14 +9,14 @@
 <div class="col-sm-3 col-lg-2">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
   <a class="nav-link active" id="v-pills-post-subscribe-tab" data-toggle="pill" href="#v-pills-post-subscribe" role="tab" aria-controls="v-pills-post-subscribe" aria-selected="true">{% trans "文章订阅" %}</a>
-  <a class="nav-link {% block deliver-settings-cls %}{% endblock %}" id="v-pills-deliver-settings-tab" href="{% url 'subscription_deliver_settings' %}" role="tab" aria-controls="v-pills-deliver-settings" aria-selected="false">{% trans "投递设置" %}</a>
+  <a class="nav-link" id="v-pills-deliver-settings-tab" data-toggle="pill" href="#v-pills-deliver-settings" role="tab" aria-controls="v-pills-deliver-settings" aria-selected="false">{% trans "投递设置" %}</a>
   <a class="nav-link" id="v-pills-deliver-log-tab" data-toggle="pill" href="#v-pills-deliver-log" role="tab" aria-controls="v-pills-deliver-log" aria-selected="false">{% trans "投递日志" %}</a>
 </div>
 </div>
 <div class="col">
 <div class="tab-content" id="v-pills-tabContent">
-  <div class="tab-pane fade show active" id="v-pills-{% block tab-content-id %}{% endblock %}" role="tabpanel" aria-labelledby="v-pills-{% block tab-content-label %}{% endblock %}-tab">{% block tab-content %}{% endblock %}</div>
   <div class="tab-pane fade show active" id="v-pills-post-subscribe" role="tabpanel" aria-labelledby="v-pills-post-subscribe-tab">{% include 'pages/_partials/snippet_post_subscribe.html' %}</div>
+  <div class="tab-pane fade" id="v-pills-deliver-settings" role="tabpanel" aria-labelledby="v-pills-deliver-settings-tab">{% include 'pages/_partials/snippet_deliver_settings.html' %}</div>
   <div class="tab-pane fade" id="v-pills-deliver-log" role="tabpanel" aria-labelledby="v-pills-deliver-log-tab">{% include 'pages/_partials/snippet_deliver_log.html' %}</div>
 </div>
 </div>
@@ -83,6 +83,69 @@ new Vue({
         });
       });
       that.loadSubscribe();
+    });
+  }
+});
+new Vue({
+  el: '#view-deliver-settings',
+  data: {
+    settings: {
+      device_addr: '',
+    },
+    settings_rsp: {
+      device_addr: {},
+    },
+    message_error: '',
+  },
+  methods: {
+    loadSettings: function() {
+      var that = this;
+      $.get({
+        url: '/api/deliver/settings/',
+        success: function(data){
+          that.settings = data;
+        },
+        error: function(xhr){
+          that.message_error = xhr.responseText;
+          console.log("错误提示： " + xhr.status + " " + xhr.statusText);
+        },
+      });
+    },
+    updateSettings: function() {
+      var that = this;
+      $.post({
+        url: '/api/deliver/settings/',
+        data: JSON.stringify(that.settings),
+        success: function(rsp) {
+          if (rsp.device_addr) {
+            rsp.device_addr.class = rsp.device_addr.rc ? 'is-valid' : 'is-invalid';
+          }
+          that.settings_rsp = rsp;
+        },
+        error: function(xhr) {
+          that.message_error = xhr.responseText;
+          console.log("错误提示： " + xhr.status + " " + xhr.statusText);
+        },
+      });
+    },
+    clearClass: function(event) {
+      if (this.settings_rsp[event.target.id].rc) {
+        this.settings_rsp[event.target.id] = {};
+      }
+    },
+  },
+  mounted: function() {
+    var that = this;
+    this.$nextTick(function() {
+      $(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRFToken': $.cookie('csrftoken'),
+            'Content-Type': "application/json; charset=utf-8",
+          }
+        });
+      });
+      that.loadSettings();
     });
   }
 });

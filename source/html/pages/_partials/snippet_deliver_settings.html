@@ -2,11 +2,17 @@
 
 <h4 class="title my-4">{% trans "设置" %}</h4>
 
-<form id="form-deliver-settings" method="POST" action="{% url 'subscription_deliver_settings' %}">
-  {% csrf_token %}
-  {{ form.as_div }}
-  <button type="submit" class="btn btn-primary my-3 generic-ajax-submit">{% trans "保存设置" %}</button>
-</form>
+<div id="view-deliver-settings">
+  {% verbatim %}
+  <div v-show='message_error' class="alert alert-danger">{{ message_error }}</div>
+  <div class="form-row">
+    <label for="device_addr">Kindle 接收地址：</label>
+    <input type="email" id="device_addr" v-model='settings.device_addr' v-on:keyup.enter="updateSettings" v-on:focus="clearClass" class="form-control" :class="settings_rsp.device_addr.class" placeholder="Email" required="true">
+    <div v-if="settings_rsp.device_addr && settings_rsp.device_addr.msg" class="invalid-feedback">{{ settings_rsp.device_addr.msg }}</div>
+  </div>
+  {% endverbatim %}
+  <button type="button" v-on:click="updateSettings" class="btn btn-primary my-4">{% trans "保存设置" %}</button>
+</div>
 
 <hr>
 
