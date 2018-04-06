@@ -43,11 +43,10 @@ module.exports = {
     production: {
       src: [
         developmentAssets + '/css/app.css.map',
-
         developmentAssets + '/css/bootstrap.css',
-        developmentAssets + '/css/bootstrap-theme.css',
 
-        developmentAssets + '/js/bootstrap.js',
+        developmentAssets + '/js/bootstrap.bundle.js',
+        developmentAssets + '/js/jquery.cookie.js',
         developmentAssets + '/js/jquery.js',
         developmentAssets + '/js/vue.js',
       ],
