@@ -59,7 +59,11 @@ new Vue({
           that.message_success = data;
         },
         error: function(xhr) {
-          that.message_error = xhr.responseJSON.detail || xhr.responseJSON || xhr.responseText;
+          if (xhr.responseJSON) {
+            that.message_error = xhr.responseJSON.detail || xhr.responseJSON
+          } else {
+            that.message_error = xhr.responseText;
+          }
           console.log(xhr);
           console.log("错误提示： " + xhr.status + " " + xhr.statusText);
         },
@@ -95,7 +99,11 @@ new Vue({
           that.spiders = data;
         },
         error: function(xhr){
-          that.message_error = xhr.responseJSON.detail || xhr.responseJSON || xhr.responseText;
+          if (xhr.responseJSON) {
+            that.message_error = xhr.responseJSON.detail || xhr.responseJSON
+          } else {
+            that.message_error = xhr.responseText;
+          }
           console.log(xhr.responseJSON);
           console.log("错误提示： " + xhr.status + " " + xhr.statusText);
         },
