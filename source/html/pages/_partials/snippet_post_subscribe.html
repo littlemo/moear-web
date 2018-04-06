@@ -6,7 +6,7 @@
 <div v-show="message_error" class="alert alert-danger">{{ message_error }}</div>
 {% endverbatim %}
 
-<h4 class="title my-4">{% trans "已订阅" %}</h4>
+<h4 class="title my-4">{% trans "文章源" %}</h4>
 <table class="table table-sm table-hover table-bordered text-center">
   <thead>
     <tr>
@@ -28,23 +28,6 @@
         <button type="button" v-on:click="subscribe(spider.name)" class="btn btn-danger">取消</button>
       </td>
     </tr>
-    {% endverbatim %}
-  </tbody>
-</table>
-
-<h4 class="title my-4">{% trans "未订阅" %}</h4>
-<table class="table table-sm table-hover table-bordered text-center">
-  <thead>
-    <tr>
-      <th scope="col" width="10%">{% trans "名称" %}</th>
-      <th scope="col" width="5%">{% trans "作者" %}</th>
-      <th scope="col" width="15%">{% trans "邮箱" %}</th>
-      <th scope="col">{% trans "描述" %}</th>
-      <th scope="col" width="50px">{% trans "订阅" %}</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% verbatim %}
     <tr v-for="spider in spiders_list" v-if="subscribe_list.indexOf(spider.name) === -1">
       <th class="align-middle" scope="row">{{ spider.display_name }}</th>
       <td class="align-middle">{{ spider.author }}</td>
