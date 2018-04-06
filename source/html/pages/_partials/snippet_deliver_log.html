@@ -1,6 +1,8 @@
 {% load i18n %}
 
-<p class="text-muted ml-2"><span class="text-danger pr-1">*</span>当前只显示最后10条投递日志</p>
+<p class="text-muted ml-2"><span class="text-danger pr-1">*</span>{% trans "当前只显示最后10条投递日志" %}</p>
+
+<div id="view-deliver-log">
 <table class="table table-sm table-hover text-center">
   <thead>
     <tr>
@@ -12,14 +14,17 @@
     </tr>
   </thead>
   <tbody>
-    {% for log in deliver_log %}
-    <tr>
-      <th scope="row">{{ log.date|date:"Y-m-d H:i:s" }}</th>
-      <td>{{ log.spider.display_name }}</td>
+    {% verbatim %}
+    <tr v-for="log in deliver_log">
+      <th scope="row">{{ log.date }}</th>
+      <td>{{ log.spider_display_name }}</td>
       <td>{{ log.file_name }}</td>
-      <td>{{ log.file_size|filesizeformat }}</td>
-      <td><span class="{% if log.status == 'completed' %}text-success{% elif log.status == 'failed' %}text-danger{% else %}text-info{% endif %}">{{ log.get_status_display }}</span></td>
+      <td>{{ log.file_size }}</td>
+      <td>
+        <span :class="log.status_class">{{ log.status_display }}</span>
+      </td>
     </tr>
-    {% endfor %}
+    {% endverbatim %}
   </tbody>
 </table>
+</div>
