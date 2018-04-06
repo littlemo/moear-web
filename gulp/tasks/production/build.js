@@ -10,7 +10,7 @@ gulp.task('build:prod', ['build'], function(callback) {
     [
       'html:prod',
       'optimize:css',
-      'optimize:js',
+      // 'optimize:js',
       'optimize:images'
     ],
     callback);
