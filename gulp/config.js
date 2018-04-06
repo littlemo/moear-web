@@ -164,4 +164,33 @@ module.exports = {
       },
     }
   },
+  optimize: {
+    html: {
+      src: production + '/**/*.{html,htm,php}',
+      dest: production,
+      options: {
+        collapseWhitespace: true
+      }
+    },
+    css: {
+      src: productionAssets + '/css/*.css',
+      dest: productionAssets + '/css/',
+      options: {},
+      replace: {}
+    },
+    js: {
+      src: productionAssets + '/js/*.js',
+      dest: productionAssets + '/js/',
+      options: {}
+    },
+    images: {
+      src: productionAssets + '/images/**/*.{jpg,jpeg,png,gif}',
+      dest: productionAssets + '/images/',
+      options: {
+        optimizationLevel: 3,
+        progressive: true,
+        interlaced: true
+      }
+    },
+  },
 }
