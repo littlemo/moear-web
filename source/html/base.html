@@ -37,7 +37,7 @@
             {{ request.user|capfirst }}
           </a>
           <div class="dropdown-menu">
-            <a href="{% url 'subscription_post_subscribe' %}" class="dropdown-item">{% trans "我的订阅" %}</a>
+            <a href="{% url 'subscription_my_subscribe' %}" class="dropdown-item">{% trans "我的订阅" %}</a>
             <a href="{% url 'account_change_password' %}" class="dropdown-item">{% trans "账户管理" %}</a>
             <div class="dropdown-divider"></div>
             <button type="button" class="dropdown-item" data-toggle="modal" data-target="#logoutModel">{% trans "注销账户" %}</button>
