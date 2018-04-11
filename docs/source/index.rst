@@ -13,6 +13,12 @@ moear-web
    intro/overview
 
 
+.. toctree::
+   :caption: 开发进程
+
+   development/release
+
+
 索引表
 ======
 
